@@ -3,3 +3,5 @@ function greet(name: string): string {
 }
 
 console.log(greet("world"));
+
+export {};
