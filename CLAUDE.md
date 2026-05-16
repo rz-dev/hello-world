@@ -2,15 +2,21 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Repository status
+## Project
 
-This repository is currently a placeholder. It contains only `README.md` (which describes it as a "first repo for testing") and no source code, build system, dependencies, tests, or tooling configuration.
+A TypeScript learning sandbox. Source lives under `src/`, runs on Node via `tsx` (no build step — `.ts` is executed directly).
 
-There is therefore no build, lint, test, or run command to document yet. When real code is introduced, update this file with:
-- The actual build / test / lint / run commands (including how to run a single test).
-- The high-level architecture once it spans multiple files.
+## Commands
 
-Until then, treat any task in this repo as greenfield: ask the user which language, framework, and tooling they want before scaffolding, rather than assuming.
+- `npm run dev` — execute `src/hello.ts` with `tsx`. Change the entry path in `package.json` when adding new scripts to run.
+- `npm run typecheck` — run `tsc --noEmit` against the project. `tsconfig.json` has `strict: true`, so type errors fail this command even though they don't block `npm run dev` (tsx strips types without checking them).
+
+There is no test runner or linter configured yet.
+
+## Conventions
+
+- `tsconfig.json` uses `"moduleResolution": "Bundler"` and `"module": "ESNext"`, so imports use ESM syntax (`import { x } from "./foo.ts"` — include the `.ts` extension).
+- `noEmit` is on; this repo is run, not compiled to `dist/`.
 
 ## Branching
 
